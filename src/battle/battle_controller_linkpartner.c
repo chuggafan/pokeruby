@@ -78,7 +78,7 @@ extern void oamt_add_pos2_onto_pos1();
 extern void StoreSpriteCallbackInData();
 extern void StartTranslateAnimSpriteByDeltas(struct Sprite *);
 extern void sub_80105EC(struct Sprite *);
-extern s32 sub_803FC34(u16);
+extern s32 GetPlayerInParty(u16);
 extern void LoadPlayerTrainerBankSprite();
 extern void sub_80313A0(struct Sprite *);
 extern u8 sub_8046400();
@@ -87,7 +87,7 @@ extern u8 CreateInvisibleSpriteWithCallback();
 extern void BattleLoadPlayerMonSprite();
 extern u8 GetBattlerSpriteCoord();
 extern u8 sub_8077F68();
-extern u8 sub_8079E90();
+extern u8 GetSpriteSubpriority();
 extern void nullsub_10();
 extern void sub_8045A5C();
 extern void sub_804777C();
@@ -1108,7 +1108,7 @@ void LinkPartnerHandleLoadPokeSprite(void)
       &gUnknown_02024E8C,
       GetBattlerSpriteCoord(gActiveBattler, 2),
       sub_8077F68(gActiveBattler),
-      sub_8079E90(gActiveBattler));
+      GetSpriteSubpriority(gActiveBattler));
     gSprites[gBankSpriteIds[gActiveBattler]].pos2.x = -240;
     gSprites[gBankSpriteIds[gActiveBattler]].data[0] = gActiveBattler;
     gSprites[gBankSpriteIds[gActiveBattler]].oam.paletteNum = gActiveBattler;
@@ -1138,7 +1138,7 @@ void sub_811F864(u8 a, u8 b)
       &gUnknown_02024E8C,
       GetBattlerSpriteCoord(a, 2),
       sub_8077F68(a),
-      sub_8079E90(a));
+      GetSpriteSubpriority(a));
     gSprites[gUnknown_0300434C[a]].data[1] = gBankSpriteIds[a];
     gSprites[gBankSpriteIds[a]].data[0] = a;
     gSprites[gBankSpriteIds[a]].data[2] = species;
@@ -1196,7 +1196,7 @@ void LinkPartnerHandleTrainerThrow(void)
             xOffset = 16;
         else
             xOffset = -16;
-        gender = gLinkPlayers[sub_803FC34(gActiveBattler)].gender;
+        gender = gLinkPlayers[GetPlayerInParty(gActiveBattler)].gender;
     }
     else
     {
@@ -1208,7 +1208,7 @@ void LinkPartnerHandleTrainerThrow(void)
     gBankSpriteIds[gActiveBattler] = CreateSprite(
       &gUnknown_02024E8C,
       80 + xOffset, 80 + 4 * (8 - gTrainerBackPicCoords[gender].coords),
-      sub_8079E90(gActiveBattler));
+      GetSpriteSubpriority(gActiveBattler));
     gSprites[gBankSpriteIds[gActiveBattler]].oam.paletteNum = gActiveBattler;
     gSprites[gBankSpriteIds[gActiveBattler]].pos2.x = 240;
     gSprites[gBankSpriteIds[gActiveBattler]].data[0] = -2;
@@ -1585,7 +1585,7 @@ void LinkPartnerHandleTrainerBallThrow(void)
     StartSpriteAnim(&gSprites[gBankSpriteIds[gActiveBattler]], 1);
     r4 = AllocSpritePalette(0xD6F9);
     LoadCompressedPalette(
-      gTrainerBackPicPaletteTable[gLinkPlayers[sub_803FC34(gActiveBattler)].gender].data,
+      gTrainerBackPicPaletteTable[gLinkPlayers[GetPlayerInParty(gActiveBattler)].gender].data,
       0x100 + r4 * 16, 0x20);
     gSprites[gBankSpriteIds[gActiveBattler]].oam.paletteNum = r4;
     taskId = CreateTask(sub_812071C, 5);

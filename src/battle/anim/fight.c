@@ -425,12 +425,12 @@ void sub_80D97CC(struct Sprite *sprite)
     {
         sprite->pos1.x = GetBattlerSpriteCoord(gBankAttacker, 2);
         sprite->pos1.y = GetBattlerSpriteCoord(gBankAttacker, 3);
-        sprite->oam.priority = sub_8079ED4(gAnimBankAttacker);
+        sprite->oam.priority = GetSpritePriority(gAnimBankAttacker);
         sprite->data[7] = gAnimBankTarget;
     }
     else
     {
-        sprite->oam.priority = sub_8079ED4(gAnimBankTarget);
+        sprite->oam.priority = GetSpritePriority(gAnimBankTarget);
         sprite->data[7] = gAnimBankAttacker;
     }
 
@@ -528,12 +528,12 @@ void sub_80D9A38(struct Sprite *sprite)
         sprite->pos1.x = GetBattlerSpriteCoord(gBankAttacker, 2);
         sprite->pos1.y = GetBattlerSpriteCoord(gBankAttacker, 3);
         bank = gAnimBankTarget;
-        sprite->oam.priority = sub_8079ED4(gAnimBankAttacker);
+        sprite->oam.priority = GetSpritePriority(gAnimBankAttacker);
     }
     else
     {
         bank = gAnimBankAttacker;
-        sprite->oam.priority = sub_8079ED4(gAnimBankTarget);
+        sprite->oam.priority = GetSpritePriority(gAnimBankTarget);
     }
 
     if (IsContest())

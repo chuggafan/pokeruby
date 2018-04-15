@@ -243,7 +243,7 @@ static void sub_807B184(u8 bank)
             if (GetMonData(&gEnemyParty[gBattlerPartyIndexes[bank]], MON_DATA_HP) == 0)
                 return;
             GetMonSpriteTemplate_803C56C(GetMonData(&gEnemyParty[gBattlerPartyIndexes[bank]], MON_DATA_SPECIES), GetBattlerPosition(bank));
-            gBankSpriteIds[bank] = CreateSprite(&gUnknown_02024E8C, GetBattlerSpriteCoord(bank, 2), posY, sub_8079E90(bank));
+            gBankSpriteIds[bank] = CreateSprite(&gUnknown_02024E8C, GetBattlerSpriteCoord(bank, 2), posY, GetSpriteSubpriority(bank));
             gSprites[gBankSpriteIds[bank]].oam.paletteNum = bank;
             gSprites[gBankSpriteIds[bank]].callback = SpriteCallbackDummy;
             gSprites[gBankSpriteIds[bank]].data[0] = bank;
@@ -255,7 +255,7 @@ static void sub_807B184(u8 bank)
             GetMonSpriteTemplate_803C5A0(gSaveBlock2.playerGender, GetBattlerPosition(0));
             gBankSpriteIds[bank] = CreateSprite(&gUnknown_02024E8C, 0x50,
                                                 (8 - gTrainerBackPicCoords[gSaveBlock2.playerGender].coords) * 4 + 80,
-                                                 sub_8079E90(0));
+                                                 GetSpriteSubpriority(0));
             gSprites[gBankSpriteIds[bank]].oam.paletteNum = bank;
             gSprites[gBankSpriteIds[bank]].callback = SpriteCallbackDummy;
             gSprites[gBankSpriteIds[bank]].data[0] = bank;
@@ -265,7 +265,7 @@ static void sub_807B184(u8 bank)
             GetMonSpriteTemplate_803C5A0(2, GetBattlerPosition(0));
             gBankSpriteIds[bank] = CreateSprite(&gUnknown_02024E8C, 0x50,
                                                 (8 - gTrainerBackPicCoords[2].coords) * 4 + 80,
-                                                 sub_8079E90(0));
+                                                 GetSpriteSubpriority(0));
             gSprites[gBankSpriteIds[bank]].oam.paletteNum = bank;
             gSprites[gBankSpriteIds[bank]].callback = SpriteCallbackDummy;
             gSprites[gBankSpriteIds[bank]].data[0] = bank;
@@ -275,7 +275,7 @@ static void sub_807B184(u8 bank)
             if (GetMonData(&gPlayerParty[gBattlerPartyIndexes[bank]], MON_DATA_HP) == 0)
                 return;
             GetMonSpriteTemplate_803C56C(GetMonData(&gPlayerParty[gBattlerPartyIndexes[bank]], MON_DATA_SPECIES), GetBattlerPosition(bank));
-            gBankSpriteIds[bank] = CreateSprite(&gUnknown_02024E8C, GetBattlerSpriteCoord(bank, 2), posY, sub_8079E90(bank));
+            gBankSpriteIds[bank] = CreateSprite(&gUnknown_02024E8C, GetBattlerSpriteCoord(bank, 2), posY, GetSpriteSubpriority(bank));
             gSprites[gBankSpriteIds[bank]].oam.paletteNum = bank;
             gSprites[gBankSpriteIds[bank]].callback = SpriteCallbackDummy;
             gSprites[gBankSpriteIds[bank]].data[0] = bank;

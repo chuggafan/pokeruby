@@ -2376,12 +2376,12 @@ void debug_sub_801174C(void)
     if (gUnknown_Debug_2023A76[0][0x22] == 8)
     {
         gUnknown_02023A14_50 |= 0x80;
-        sub_80408BC();
+        ResetAndPlayBattleBGM();
     }
     else if (gUnknown_Debug_2023A76[0][0x22] == 7)
     {
         gUnknown_02023A14_50 |= 0x20;
-        sub_80408BC();
+        ResetAndPlayBattleBGM();
     }
     else if (gUnknown_Debug_2023A76[0][0x22] == 6)
     {
@@ -2390,17 +2390,17 @@ void debug_sub_801174C(void)
             gSharedMem[0x160A3] = gUnknown_Debug_2023A76[0][2] - 2;
         else
             gSharedMem[0x160A3] = gUnknown_Debug_2023A76[0][2];
-        sub_80408BC();
+        ResetAndPlayBattleBGM();
     }
     else if (gUnknown_Debug_2023A76[0][0x22] == 5)
     {
         gUnknown_02023A14_50 |= 0x21;
-        sub_80408BC();
+        ResetAndPlayBattleBGM();
     }
     else
     {
         if (!(gUnknown_Debug_2023A76[0][0x22] & 1))
-            sub_80408BC();
+            ResetAndPlayBattleBGM();
         if (gUnknown_Debug_2023A76[0][0x22] & 2)
             gUnknown_02023A14_50 |= 4;
         if (gUnknown_Debug_2023A76[0][0x22] & 4)

@@ -695,7 +695,7 @@ _080DA518:
 	cmp r0, 0
 	beq _080DA5C0
 	adds r0, r6, 0
-	bl sub_8079ED4
+	bl GetSpritePriority
 	lsls r0, 24
 	lsrs r0, 24
 	adds r0, 0x1
@@ -716,7 +716,7 @@ _080DA5B8: .4byte gMain
 _080DA5BC: .4byte 0x0000043d
 _080DA5C0:
 	adds r0, r6, 0
-	bl sub_8079ED4
+	bl GetSpritePriority
 	movs r1, 0x3
 	ands r1, r0
 	lsls r1, 2
@@ -761,7 +761,7 @@ _080DA5D8:
 	b _080DA66E
 _080DA618:
 	adds r0, r6, 0
-	bl sub_8079ED4
+	bl GetSpritePriority
 	movs r1, 0x3
 	ands r1, r0
 	lsls r1, 2
@@ -1720,7 +1720,7 @@ sub_80DAD30: @ 80DAD30
 	adds r4, r0, 0
 	ldr r0, _080DAD78 @ =gAnimBankTarget
 	ldrb r0, [r0]
-	bl sub_8079ED4
+	bl GetSpritePriority
 	movs r1, 0x3
 	ands r1, r0
 	lsls r1, 2
@@ -1812,7 +1812,7 @@ _080DADEE:
 	beq _080DAE24
 	ldr r0, _080DAE20 @ =gAnimBankTarget
 	ldrb r0, [r0]
-	bl sub_8079ED4
+	bl GetSpritePriority
 	lsls r0, 24
 	lsrs r0, 24
 	adds r0, 0x1
@@ -1832,7 +1832,7 @@ _080DAE20: .4byte gAnimBankTarget
 _080DAE24:
 	ldr r0, _080DAE40 @ =gAnimBankTarget
 	ldrb r0, [r0]
-	bl sub_8079ED4
+	bl GetSpritePriority
 	movs r1, 0x3
 	ands r1, r0
 	lsls r1, 2

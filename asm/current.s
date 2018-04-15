@@ -2284,7 +2284,7 @@ _080D75F4:
 	lsrs r0, 24
 	strh r0, [r5, 0x22]
 	ldrb r0, [r4]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	lsls r0, 24
 	lsrs r0, 24
 	subs r0, 0x2

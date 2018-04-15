@@ -1876,13 +1876,13 @@ void sub_8079E24()
     {
         if (IsAnimBankSpriteVisible(i))
         {
-            gSprites[gBattleMonSprites[i]].subpriority = sub_8079E90(i);
+            gSprites[gBattleMonSprites[i]].subpriority = GetSpriteSubpriority(i);
             gSprites[gBattleMonSprites[i]].oam.priority = 2;
         }
     }
 }
 
-u8 sub_8079E90(u8 bank)
+u8 GetSpriteSubpriority(u8 bank)
 {
     u8 identity;
     u8 ret;
@@ -1909,7 +1909,7 @@ u8 sub_8079E90(u8 bank)
     return ret;
 }
 
-u8 sub_8079ED4(u8 slot)
+u8 GetSpritePriority(u8 slot)
 {
     u8 status = GetBattlerPosition(slot);
 
@@ -2247,7 +2247,7 @@ void sub_807A69C(u8 taskId)
 
     dest = (task->data[4] + 0x10) * 0x10;
     src = (gSprites[task->data[0]].oam.paletteNum + 0x10) * 0x10;
-    task->data[6] = sub_8079E90(gAnimBankAttacker);
+    task->data[6] = GetSpriteSubpriority(gAnimBankAttacker);
     if (task->data[6] == 20 || task->data[6] == 40)
         task->data[6] = 2;
     else

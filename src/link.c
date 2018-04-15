@@ -1072,7 +1072,7 @@ u8 sub_8008198(void)
     return result;
 }
 
-void sub_80081C8(u8 playerCount)
+void SetSavedLinkPlayerCount(u8 playerCount)
 {
     s32 i;
 
@@ -1083,12 +1083,12 @@ void sub_80081C8(u8 playerCount)
         gSavedLinkPlayers[i] = gLinkPlayers[i];
 }
 
-u8 sub_800820C(void)
+u8 GetSavedLinkPlayerCount(void)
 {
     return gSavedLinkPlayerCount;
 }
 
-u8 sub_8008218(void)
+u8 GetSavedMultiplayerId(void)
 {
     return gSavedMultiplayerId;
 }

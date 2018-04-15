@@ -101,7 +101,7 @@ EWRAM_DATA struct LinkPlayerMapObject gLinkPlayerMapObjects[4] = {0};
 
 static u8 gUnknown_03000580[4];
 static u16 (*gUnknown_03000584)(u32);
-static u8 gUnknown_03000588;
+static bool8 gUnknown_03000588;
 
 u16 word_3004858;
 void (*gFieldCallback)(void);
@@ -1860,12 +1860,12 @@ void sub_8054E34(void)
 
 void sub_8054E60(void)
 {
-    InitCameraUpdateCallback(sub_8055AE8(gUnknown_03004860));
+    InitCameraUpdateCallback(GetMapSpriteIdForLinkPlayer(gUnknown_03004860));
 }
 
 void sub_8054E7C(void)
 {
-    InitCameraUpdateCallback(sub_8055AE8(gUnknown_03004860));
+    InitCameraUpdateCallback(GetMapSpriteIdForLinkPlayer(gUnknown_03004860));
 }
 
 void sub_8054E98(void)
@@ -2428,7 +2428,7 @@ bool32 sub_8055870(void)
 
 bool32 sub_80558AC(void)
 {
-    u8 temp;
+    bool8 temp;
 
     if (is_c1_link_related_active() != TRUE)
         return FALSE;
@@ -2544,7 +2544,7 @@ void unref_sub_8055A9C(u8 linkPlayerId)
     mapObj->active = 0;
 }
 
-u8 sub_8055AE8(u8 linkPlayerId)
+u8 GetMapSpriteIdForLinkPlayer(u8 linkPlayerId)
 {
     u8 mapObjId = gLinkPlayerMapObjects[linkPlayerId].mapObjId;
     struct MapObject *mapObj = &gMapObjects[mapObjId];

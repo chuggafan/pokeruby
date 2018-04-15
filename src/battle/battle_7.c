@@ -111,7 +111,7 @@ void sub_8031F0C(void);
 void refresh_graphics_maybe(u8, u8, u8);
 void sub_80324E0(u8 a);
 void sub_80327CC(void);
-void sub_8032978(struct Sprite *);
+void SetSpriteInvisible(struct Sprite *);
 void sub_80328A4(struct Sprite *);
 
 void sub_80312F0(struct Sprite *sprite)
@@ -779,12 +779,12 @@ void refresh_graphics_maybe(u8 a, u8 b, u8 spriteId)
 void sub_80324BC(u8 a, u16 b)
 {
     if (b == 0xA4)
-        ewram17800[a].substituteSprite = 1;
+        ewram17800[a].substituteSprite = TRUE;
 }
 
 void sub_80324E0(u8 a)
 {
-    ewram17800[a].substituteSprite = 0;
+    ewram17800[a].substituteSprite = FALSE;
 }
 
 void HandleLowHpMusicChange(struct Pokemon *pkmn, u8 b)
@@ -900,7 +900,7 @@ void sub_80328A4(struct Sprite *sprite)
 
     if (!r7->inUse || IsBankSpritePresent(r4) == 0)
     {
-        sprite->callback = sub_8032978;
+        sprite->callback = SetSpriteInvisible;
         return;
     }
     if (gAnimScriptActive || r7->invisible)
@@ -914,7 +914,7 @@ void sub_80328A4(struct Sprite *sprite)
     sprite->invisible = invisible;
 }
 
-void sub_8032978(struct Sprite *sprite)
+void SetSpriteInvisible(struct Sprite *sprite)
 {
     sprite->invisible = TRUE;
 }
@@ -928,16 +928,16 @@ void sub_8032984(u8 a, u16 b)
         if (gEnemyMonElevation[b] != 0)
             gSprites[ewram17810[a].unk7].callback = sub_80328A4;
         else
-            gSprites[ewram17810[a].unk7].callback = sub_8032978;
+            gSprites[ewram17810[a].unk7].callback = SetSpriteInvisible;
     }
 }
 
-void sub_8032A08(u8 a)
+void SetSpriteCallbackToInvisble(u8 a)
 {
-    gSprites[ewram17810[a].unk7].callback = sub_8032978;
+    gSprites[ewram17810[a].unk7].callback = SetSpriteInvisible;
 }
 
-void sub_8032A38(void)
+void QuitSubstitutingSprite(void)
 {
     u16 *ptr = (u16 *)(VRAM + 0x240);
     s32 i;

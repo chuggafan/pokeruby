@@ -1129,7 +1129,7 @@ static void sub_8047EC0(void)
             }
             break;
         case  3:
-            if (GetLinkPlayerCount_2() >= sub_800820C())
+            if (GetLinkPlayerCount_2() >= GetSavedLinkPlayerCount())
             {
                 if (IsLinkMaster())
                 {
@@ -4049,7 +4049,7 @@ static void sub_804B41C(void)
         case 3:
             if (IsLinkMaster())
             {
-                if (GetLinkPlayerCount_2() >= sub_800820C() && ++ gUnknown_03004828->unk_00c0 > 30)
+                if (GetLinkPlayerCount_2() >= GetSavedLinkPlayerCount() && ++ gUnknown_03004828->unk_00c0 > 30)
                 {
                     sub_8007F4C();
                     gMain.state ++;
@@ -4321,7 +4321,7 @@ static NAKED void sub_804B41C(void)
                     "_0804B608:\n"
                     "\tbl GetLinkPlayerCount_2\n"
                     "\tadds r4, r0, 0\n"
-                    "\tbl sub_800820C\n"
+                    "\tbl GetSavedLinkPlayerCount\n"
                     "\tlsls r4, 24\n"
                     "\tlsls r0, 24\n"
                     "\tcmp r4, r0\n"

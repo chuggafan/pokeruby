@@ -312,15 +312,12 @@ static bool32 sub_8110494(u8 level)
     switch (battleTower->var_4AE[level])
     {
     case 0:
-        return FALSE;
     case 1:
         return FALSE;
     case 2:
-        return TRUE;
-    case 4:
-        return FALSE;
     case 3:
         return TRUE;
+    case 4:
     case 5:
         return FALSE;
     case 6:

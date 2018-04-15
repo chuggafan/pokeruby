@@ -35,9 +35,9 @@ void sub_80D5CC0(struct Sprite *sprite)
     if (gMain.inBattle)
     {
         if (sprite->data[1] < 64 || sprite->data[1] > 195)
-            sprite->oam.priority = sub_8079ED4(gAnimBankTarget);
+            sprite->oam.priority = GetSpritePriority(gAnimBankTarget);
         else
-            sprite->oam.priority = sub_8079ED4(gAnimBankTarget) + 1;
+            sprite->oam.priority = GetSpritePriority(gAnimBankTarget) + 1;
     }
     else
     {

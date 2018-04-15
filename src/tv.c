@@ -471,7 +471,7 @@ void sub_80BF55C(TVShow tvShow[], u8 showidx);
 void sub_80BEA88(void);
 
 void sub_80BE138(TVShow *show);
-void sub_80BE160(TVShow *show);
+void SetShowTrainerID(TVShow *show);
 extern u16 gLastUsedItem;
 
 void InterviewAfter_FanClubLetter(void);
@@ -933,7 +933,7 @@ void sub_80BE138(TVShow *show)
     show->common.trainerIdHi = playerId >> 8;
 }
 
-void sub_80BE160(TVShow *show)
+void SetShowTrainerID(TVShow *show)
 {
     u32 playerId = GetPlayerTrainerId();
 
@@ -961,7 +961,7 @@ void InterviewAfter_BravoTrainerPokemonProfile(void)
         bravoTrainerNew->var14 = bravoTrainerSrc->var14;
         bravoTrainerNew->contestResult = bravoTrainerSrc->contestResult;
         bravoTrainerNew->contestCategory = bravoTrainerSrc->contestCategory;
-        sub_80BE160((TVShow *)bravoTrainerNew);
+        SetShowTrainerID((TVShow *)bravoTrainerNew);
         bravoTrainerNew->language = GAME_LANGUAGE;
         bravoTrainerNew->var1f = sub_80BDEAC(bravoTrainerNew->pokemonNickname);
         Text_StripExtCtrlCodes(bravoTrainerNew->pokemonNickname);
@@ -1014,7 +1014,7 @@ void InterviewAfter_BravoTrainerBattleTowerProfile(void)
     else
         bravoTrainerTower->btLevel = 100;
     bravoTrainerTower->var1b = gSpecialVar_0x8004;
-    sub_80BE160((TVShow *)bravoTrainerTower);
+    SetShowTrainerID((TVShow *)bravoTrainerTower);
     bravoTrainerTower->language = GAME_LANGUAGE;
 }
 
@@ -1070,7 +1070,7 @@ void sub_80BE478(void)
         nameRaterShow->var1C = sub_80BF674(nameRaterShow->species);
         StringCopy(nameRaterShow->trainerName, gSaveBlock2.playerName);
         GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, nameRaterShow->pokemonName);
-        sub_80BE160((TVShow *)nameRaterShow);
+        SetShowTrainerID((TVShow *)nameRaterShow);
         nameRaterShow->language = GAME_LANGUAGE;
         nameRaterShow->pokemonNameLanguage = sub_80BDEAC(nameRaterShow->pokemonName);
         Text_StripExtCtrlCodes(nameRaterShow->pokemonName);
@@ -1104,7 +1104,7 @@ void InterviewAfter_FanClubLetter(void)
     fanclubLetter->active = 1;
     StringCopy(fanclubLetter->playerName, gSaveBlock2.playerName);
     fanclubLetter->species = GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_SPECIES, NULL);
-    sub_80BE160((TVShow *)fanclubLetter);
+    SetShowTrainerID((TVShow *)fanclubLetter);
     fanclubLetter->language = GAME_LANGUAGE;
 }
 
@@ -1116,7 +1116,7 @@ void InterviewAfter_RecentHappenings(void)
     recentHappenings->active = 1;
     StringCopy(recentHappenings->playerName, gSaveBlock2.playerName);
     recentHappenings->var02 = 0;
-    sub_80BE160((TVShow *)recentHappenings);
+    SetShowTrainerID((TVShow *)recentHappenings);
     recentHappenings->language = GAME_LANGUAGE;
 }
 
@@ -1133,7 +1133,7 @@ void InterviewAfter_PkmnFanClubOpinions(void)
     StringCopy(fanclubOpinions->playerName, gSaveBlock2.playerName);
     GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_NICKNAME, fanclubOpinions->var10);
     fanclubOpinions->var02 = GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_SPECIES, NULL);
-    sub_80BE160((TVShow *)fanclubOpinions);
+    SetShowTrainerID((TVShow *)fanclubOpinions);
     fanclubOpinions->language = GAME_LANGUAGE;
     fanclubOpinions->var0E = sub_80BDEAC(fanclubOpinions->var10);
     Text_StripExtCtrlCodes(fanclubOpinions->var10);
@@ -1182,7 +1182,7 @@ void sub_80BE778(void)
             massOutbreak->probability = 0x32;
             massOutbreak->var15 = 0;
             massOutbreak->daysLeft = 0x01;
-            sub_80BE160((TVShow *)massOutbreak);
+            SetShowTrainerID((TVShow *)massOutbreak);
             massOutbreak->language = GAME_LANGUAGE;
         }
     }

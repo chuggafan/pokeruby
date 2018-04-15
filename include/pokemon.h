@@ -625,7 +625,7 @@ u32 CanMonLearnTMHM(struct Pokemon *, u8);
 u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves);
 u8 sub_8040574(struct Pokemon *party);
 void ClearBattleMonForms(void);
-void sub_80408BC();
+void ResetAndPlayBattleBGM();
 void current_map_music_set__default_for_battle(u16);
 const u8 *GetMonSpritePal(struct Pokemon *mon);
 const u8 *GetMonSpritePalFromOtIdPersonality(u16, u32, u32);

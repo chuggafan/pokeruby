@@ -122,12 +122,12 @@ void sub_80CFB04(u8 taskId)
         gBattleAnimArgs[4] ^= 0x80;
         if (gBattleAnimArgs[4] >= 64)
         {
-            u16 var = sub_8079E90(gAnimBankTarget) + (gBattleAnimArgs[4] - 64);
+            u16 var = GetSpriteSubpriority(gAnimBankTarget) + (gBattleAnimArgs[4] - 64);
             gTasks[taskId].data[2] = var;
         }
         else
         {
-            u16 var = sub_8079E90(gAnimBankTarget) - gBattleAnimArgs[4];
+            u16 var = GetSpriteSubpriority(gAnimBankTarget) - gBattleAnimArgs[4];
             gTasks[taskId].data[2] = var;
         }
     }
@@ -135,12 +135,12 @@ void sub_80CFB04(u8 taskId)
     {
         if (gBattleAnimArgs[4] >= 64)
         {
-            u16 var = sub_8079E90(gAnimBankTarget) + (gBattleAnimArgs[4] - 64);
+            u16 var = GetSpriteSubpriority(gAnimBankTarget) + (gBattleAnimArgs[4] - 64);
             gTasks[taskId].data[2] = var;
         }
         else
         {
-            u16 var = sub_8079E90(gAnimBankTarget) - gBattleAnimArgs[4];
+            u16 var = GetSpriteSubpriority(gAnimBankTarget) - gBattleAnimArgs[4];
             gTasks[taskId].data[2] = var;
         }
     }

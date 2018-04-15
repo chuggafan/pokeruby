@@ -299,8 +299,8 @@ u8 GetLinkPartnerNames(void)
 {
     u8 i;
     u8 j = 0;
-    u8 myLinkPlayerNumber = sub_8008218();
-    u8 nLinkPlayers = sub_800820C();
+    u8 myLinkPlayerNumber = GetSavedMultiplayerId();
+    u8 nLinkPlayers = GetSavedLinkPlayerCount();
     for (i=0; i<nLinkPlayers; i++)
     {
         if (myLinkPlayerNumber != i)
@@ -329,7 +329,7 @@ void SpawnBerryBlenderLinkPlayerSprites(void)
     u8 rivalAvatarGraphicsId;
     u8 i;
 
-    myLinkPlayerNumber = sub_8008218();
+    myLinkPlayerNumber = GetSavedMultiplayerId();
     playerDirectionLowerNybble = player_get_direction_lower_nybble();
     switch (playerDirectionLowerNybble)
     {

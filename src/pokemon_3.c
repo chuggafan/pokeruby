@@ -608,7 +608,7 @@ bool8 sub_803FBFC(u8 id)
     return retVal;
 }
 
-s32 sub_803FC34(u16 a1)
+s32 GetPlayerInParty(u16 a1)
 {
     s32 id;
     for (id = 0; id < MAX_LINK_PLAYERS; id++)
@@ -1145,7 +1145,7 @@ u16 GetBGM_ForBattle(void)
     return BGM_BATTLE27;
 }
 
-void sub_80408BC(void)
+void ResetAndPlayBattleBGM(void)
 {
     ResetMapMusic();
     m4aMPlayAllStop();
@@ -1356,10 +1356,10 @@ bool8 IsShinyOtIdPersonality(u32 otId, u32 personality)
     return retVal;
 }
 
-u8 *sub_8040D08(void)
+u8 *GetMultiplayerName(void)
 {
     u8 id = GetMultiplayerId();
-    return gLinkPlayers[sub_803FC34(gLinkPlayers[id].lp_field_18 ^ 2)].name;
+    return gLinkPlayers[GetPlayerInParty(gLinkPlayers[id].lp_field_18 ^ 2)].name;
 }
 
 const u8 gJapaneseNidoranNames[][11] = {_("ニドラン♂"), _("ニドラン♀")};

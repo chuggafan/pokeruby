@@ -91,7 +91,7 @@ void sub_80D6328(struct Sprite *sprite)
 
     if (gBattleAnimArgs[6] & 1)
     {
-        sprite->oam.priority = sub_8079ED4(slot) + 1;
+        sprite->oam.priority = GetSpritePriority(slot) + 1;
     }
 
     matrixNum = sprite->oam.matrixNum;

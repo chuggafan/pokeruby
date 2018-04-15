@@ -196,7 +196,7 @@ void sub_80B95F0(u8 taskId)
 
             if (IsLinkMaster() == 1)
             {
-                if (players == sub_800820C())
+                if (players == GetSavedLinkPlayerCount())
                 {
                     PlaySE(SE_PIN);
                     task->tState = 201;
@@ -211,7 +211,7 @@ void sub_80B95F0(u8 taskId)
         }
         break;
     case 201:
-        if (sub_800820C() == GetLinkPlayerCount_2())
+        if (GetSavedLinkPlayerCount() == GetLinkPlayerCount_2())
         {
             if (++task->data[12] > GetLinkPlayerCount_2() * 30)
             {
@@ -221,7 +221,7 @@ void sub_80B95F0(u8 taskId)
         }
         break;
     case 301:
-        if (sub_800820C() == GetLinkPlayerCount_2())
+        if (GetSavedLinkPlayerCount() == GetLinkPlayerCount_2())
             task->tState = 1;
         break;
     case 400:        // wait 20 frames

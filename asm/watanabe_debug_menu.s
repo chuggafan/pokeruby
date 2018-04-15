@@ -3705,7 +3705,7 @@ debug_80C51C8:
 	thumb_func_start debug_80C51E4
 debug_80C51E4:
 	push	{lr}
-	bl	sub_80408BC
+	bl	ResetAndPlayBattleBGM
 	ldr	r0, ._352       @ gMain
 	ldr	r1, ._352 + 4   @ debug_80C41A8
 	str	r1, [r0, #0x8]

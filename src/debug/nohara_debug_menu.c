@@ -478,7 +478,7 @@ void debug_sub_808FA88(u8 a0, u8 a1)
     {
         case 2:
         case 4:
-            sub_80BE160(gSaveBlock1.tvShows + a0);
+            SetShowTrainerID(gSaveBlock1.tvShows + a0);
             break;
         case 3:
             sub_80BE138(gSaveBlock1.tvShows + a0);

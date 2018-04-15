@@ -1369,7 +1369,7 @@ _0813FBE0:
 	bl GetBattlerAtPosition
 	lsls r0, 24
 	lsrs r0, 24
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	adds r3, r0, 0
 	adds r3, 0x1
 	lsls r3, 24

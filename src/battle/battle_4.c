@@ -209,7 +209,7 @@ void SwitchInClearSetData(void);
 u8* ConvertIntToDecimalStringN(u8*, s32, u8, u8);
 u8 GetSetPokedexFlag(u16 nationalNum, u8 caseID);
 u16 SpeciesToNationalPokedexNum(u16 species);
-u8 sub_803FC34(u8 bank);
+u8 GetPlayerInParty(u8 bank);
 u16 sub_803FBFC(u8 a);
 u8 GetBattlerAtPosition(u8 ID);
 void sub_8012258(u8);
@@ -8387,7 +8387,7 @@ static void atk4F_jumpifcantswitch(void)
         else
             party = gPlayerParty;
         val = 0;
-        if (sub_803FBFC(sub_803FC34(gActiveBattler)) == 1)
+        if (sub_803FBFC(GetPlayerInParty(gActiveBattler)) == 1)
             val = 3;
         for (to_cmp = val + 3; val < to_cmp; val++)
         {
@@ -11765,7 +11765,7 @@ static void atk8F_forcerandomswitch(void)
         {
             valid = 0;
             val = 0;
-            if (sub_803FBFC(sub_803FC34(gBankTarget)) == 1)
+            if (sub_803FBFC(GetPlayerInParty(gBankTarget)) == 1)
                 val = 3;
             for (i = val; i < val + 3; i++)
             {
@@ -11800,7 +11800,7 @@ static void atk8F_forcerandomswitch(void)
                 do
                 {
                     val = Random() % 3;
-                    if (sub_803FBFC(sub_803FC34(gBankTarget)) == 1)
+                    if (sub_803FBFC(GetPlayerInParty(gBankTarget)) == 1)
                         i = val + 3;
                     else
                         i = val;

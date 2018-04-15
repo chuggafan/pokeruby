@@ -25,7 +25,7 @@ extern void PartyMenuPrintMonsLevelOrStatus(void);
 extern void nullsub_13(void);
 extern void sub_802E414(void);
 extern void sub_80A6DCC(void);
-extern u8 *sub_8040D08();
+extern u8 *GetMultiplayerName();
 extern void sub_8040B8C(void);
 extern void nullsub_14();
 extern u8 sub_803FBBC(void);
@@ -647,7 +647,7 @@ static void Task_BattlePartyMenuShift(u8 taskId)
     if (IsLinkDoubleBattle() == TRUE && (partySelection == 1 || partySelection == 4 || partySelection == 5))
     {
         sub_806D5A4();
-        StringCopy(gStringVar1, sub_8040D08());
+        StringCopy(gStringVar1, GetMultiplayerName());
         StringExpandPlaceholders(gStringVar4, gOtherText_CantSwitchPokeWithYours);
         sub_806E834(gStringVar4, 0);
         gTasks[taskId].func = Task_80954C0;

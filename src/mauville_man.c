@@ -185,7 +185,7 @@ static void sub_80F7DC0(void);
 static void Task_BardSong(u8);
 static void StartBardSong(u8);
 static void StorytellerSetup(void);
-static void sub_80F8428(void);
+static void SetMauvilleStorytellerNotRecorded(void);
 
 static void SetupBard(void)
 {
@@ -720,28 +720,28 @@ _080F7EE2:\n\
 }
 #endif
 
-static void sub_80F7EFC(void)
+static void SetBardSongNotChanged(void)
 {
     struct MauvilleManBard *bard = &gSaveBlock1.mauvilleMan.bard;
 
     bard->hasChangedSong = FALSE;
 }
 
-static void sub_80F7F0C(void)
+static void SetNotSpokenToHipster(void)
 {
     struct MauvilleManHipster *hipster = &gSaveBlock1.mauvilleMan.hipster;
 
     hipster->alreadySpoken = FALSE;
 }
 
-static void sub_80F7F18(void)
+static void SetNotSpokenToTrader_(void)
 {
-    sub_8109A20();
+    SetNotSpokenToTrader();
 }
 
-static void sub_80F7F24(void)
+static void SetNotSpokenToStoryteller(void)
 {
-    sub_80F8428();
+    SetMauvilleStorytellerNotRecorded();
 }
 
 void sub_80F7F30(void)
@@ -749,16 +749,16 @@ void sub_80F7F30(void)
     switch (GetCurrentMauvilleOldMan())
     {
     case MAUVILLE_MAN_BARD:
-        sub_80F7EFC();
+        SetBardSongNotChanged();
         break;
     case MAUVILLE_MAN_HIPSTER:
-        sub_80F7F0C();
+        SetNotSpokenToHipster();
         break;
     case MAUVILLE_MAN_STORYTELLER:
-        sub_80F7F24();
+        SetNotSpokenToStoryteller();
         break;
     case MAUVILLE_MAN_TRADER:
-        sub_80F7F18();
+        SetNotSpokenToTrader_();
         break;
     case MAUVILLE_MAN_GIDDY:
         break;
@@ -1073,7 +1073,7 @@ static void StorytellerSetup(void)
     }
 }
 
-static void sub_80F8428(void)
+static void SetMauvilleStorytellerNotRecorded(void)
 {
     struct MauvilleManStoryteller *storyteller = &gSaveBlock1.mauvilleMan.storyteller;
 

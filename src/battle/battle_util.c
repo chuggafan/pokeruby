@@ -86,7 +86,7 @@ bool8 sub_8018018(u8 bank, u8, u8);
 s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *defender, u32 move, u16 a4, u16 powerOverride, u8 typeOverride, u8 bank_atk, u8 bank_def);
 u8 CountTrailingZeroBits(u32 a);
 u8 GetMoveTarget(u16 move, u8 useMoveTarget);
-u8 sub_803FC34(u8 bank);
+u8 GetPlayerInParty(u8 bank);
 u16 sub_803FBFC(u8 a);
 void RecordAbilityBattle(u8 bank, u8 ability);
 void RecordItemBattle(u8 bank, u8 holdEffect);
@@ -1596,7 +1596,7 @@ bool8 sub_8018018(u8 bank, u8 r1, u8 r2)
         return 0;
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
     {
-        r7 = sub_803FC34(bank);
+        r7 = GetPlayerInParty(bank);
         if (GetBattlerSide(bank) == 0)
             party = gPlayerParty;
         else

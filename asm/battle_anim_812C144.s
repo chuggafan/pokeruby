@@ -5955,7 +5955,7 @@ sub_812EEEC: @ 812EEEC
 _0812EF26:
 	ldr r0, _0812EF34 @ =gAnimBankAttacker
 	ldrb r0, [r0]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	subs r0, 0x1
 	b _0812EF42
 	.align 2, 0
@@ -5963,7 +5963,7 @@ _0812EF34: .4byte gAnimBankAttacker
 _0812EF38:
 	ldr r0, _0812EF84 @ =gAnimBankAttacker
 	ldrb r0, [r0]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	adds r0, 0x1
 _0812EF42:
 	adds r1, r4, 0
@@ -6213,7 +6213,7 @@ _0812F13C:
 _0812F13E:
 	ldr r0, _0812F21C @ =gAnimBankAttacker
 	ldrb r0, [r0]
-	bl sub_8079ED4
+	bl GetSpritePriority
 	lsls r0, 24
 	lsrs r7, r0, 24
 	ldr r5, _0812F21C @ =gAnimBankAttacker
@@ -7844,7 +7844,7 @@ _0812FDC2:
 	lsrs r0, 24
 	strh r0, [r5, 0x12]
 	adds r0, r4, 0
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r5, 0x14]
@@ -8886,7 +8886,7 @@ _081305C6:
 	ldrsh r6, [r7, r1]
 	mov r1, r8
 	ldrb r0, [r1]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	adds r3, r0, 0
 	subs r3, 0x5
 	lsls r3, 24
@@ -10181,7 +10181,7 @@ _08130FA6:
 	ldrh r0, [r4, 0x3C]
 	lsls r0, 24
 	lsrs r0, 24
-	bl sub_8079ED4
+	bl GetSpritePriority
 	movs r2, 0x3
 	ands r2, r0
 	lsls r2, 2
@@ -10938,7 +10938,7 @@ sub_8131564: @ 8131564
 	cmp r0, 0
 	bne _08131590
 	ldrb r0, [r4]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	subs r0, 0x2
 	adds r1, r5, 0
 	adds r1, 0x43
@@ -10950,7 +10950,7 @@ _08131588: .4byte gAnimBankTarget
 _0813158C: .4byte 0x0000ff70
 _08131590:
 	ldrb r0, [r4]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	adds r0, 0x2
 	adds r1, r5, 0
 	adds r1, 0x43
@@ -11571,7 +11571,7 @@ _08131A44:
 	ldrh r5, [r0]
 	ldr r0, _08131A70 @ =gAnimBankAttacker
 	ldrb r0, [r0]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	lsls r0, 24
 	lsrs r4, r0, 24
 	movs r7, 0

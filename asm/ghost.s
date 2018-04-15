@@ -2901,12 +2901,12 @@ sub_80DF1A4: @ 80DF1A4
 	strh r1, [r4, 0x1E]
 	strh r6, [r4, 0x16]
 	ldrb r0, [r5]
-	bl sub_8079ED4
+	bl GetSpritePriority
 	lsls r0, 24
 	lsrs r0, 24
 	strh r0, [r4, 0x12]
 	ldrb r0, [r5]
-	bl sub_8079E90
+	bl GetSpriteSubpriority
 	lsls r0, 24
 	lsrs r0, 24
 	subs r0, 0x2

@@ -216,7 +216,7 @@ void SpawnLinkPlayerMapObject(u8, s16, s16, u8);
 void InitLinkPlayerMapObjectPos(struct MapObject *, s16, s16);
 // unref_sub_8055A6C
 // unref_sub_8055A9C
-u8 sub_8055AE8(u8);
+u8 GetMapSpriteIdForLinkPlayer(u8);
 void sub_8055B08(u8, u16 *, u16 *);
 u8 sub_8055B30(u8);
 u8 sub_8055B50(u8);

@@ -198,7 +198,7 @@ void sub_8121D74(u8* textBuff);
 void StrCpyDecodeBattleTextBuff(u8* src, u8* dst);
 
 u8 GetBattlerSide(u8 bank);
-s32 sub_803FC34(u16);
+s32 GetPlayerInParty(u16);
 void get_trainer_name(u8* dst);
 u8 get_trainer_class_name_index(void);
 u8 GetMultiplayerId(void);
@@ -744,16 +744,16 @@ u32 StrCpyDecodeBattle(const u8* src, u8* dst)
                 toCpy = gLinkPlayers[multiplayerID].name;
                 break;
             case 28: // link partner name?
-                toCpy = gLinkPlayers[sub_803FC34(2 ^ gLinkPlayers[multiplayerID].lp_field_18)].name;
+                toCpy = gLinkPlayers[GetPlayerInParty(2 ^ gLinkPlayers[multiplayerID].lp_field_18)].name;
                 break;
             case 29: // link opponent 1 name?
-                toCpy = gLinkPlayers[sub_803FC34(1 ^ gLinkPlayers[multiplayerID].lp_field_18)].name;
+                toCpy = gLinkPlayers[GetPlayerInParty(1 ^ gLinkPlayers[multiplayerID].lp_field_18)].name;
                 break;
             case 30: // link opponent 2 name?
-                toCpy = gLinkPlayers[sub_803FC34(3 ^ gLinkPlayers[multiplayerID].lp_field_18)].name;
+                toCpy = gLinkPlayers[GetPlayerInParty(3 ^ gLinkPlayers[multiplayerID].lp_field_18)].name;
                 break;
             case 31: // link scripting active name
-                toCpy = gLinkPlayers[sub_803FC34(gBattleStruct->scriptingActive)].name;
+                toCpy = gLinkPlayers[GetPlayerInParty(gBattleStruct->scriptingActive)].name;
                 break;
             case 32: // player name
                 toCpy = gSaveBlock2.playerName;

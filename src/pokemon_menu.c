@@ -183,13 +183,13 @@ static const struct PokeMenuFieldMoveFunc sFieldMoveFuncs[] =
     {SetUpFieldMove_SweetScent,     0x9},
 };
 
-void sub_8089A70(void)
+void OpenStandardPartyMenu(void)
 {
     gPaletteFade.bufferTransferDisabled = 1;
     OpenPartyMenu(PARTY_MENU_TYPE_STANDARD, 0);
 }
 
-static void sub_8089A8C(void)
+static void AddPokemonMenuOptions(void)
 {
     sPokeMenuOptionsNo = 0;
     // if checking pokemon is an egg, we can't give it an item and it doesn't know any move
@@ -260,7 +260,7 @@ void HandleDefaultPartyMenu(u8 taskID)
             PlaySE(SE_SELECT);
             gLastFieldPokeMenuOpened = sub_806CA38(taskID);
             GetMonNickname(&gPlayerParty[gLastFieldPokeMenuOpened], gStringVar1);
-            sub_8089A8C();
+            AddPokemonMenuOptions();
             sPokeMenuCursorPos = 0;
             sub_8089C7C(0);
             gTasks[taskID].func = sub_8089D94;
@@ -318,7 +318,7 @@ static void sub_8089E4C(u8 taskID)
 static void sub_8089E84(void)
 {
     GetMonNickname(&gPlayerParty[gLastFieldPokeMenuOpened], gStringVar1);
-    sub_8089A8C();
+    AddPokemonMenuOptions();
     sPokeMenuCursorPos = 0;
     sub_8089C7C(0);
 }

@@ -74,7 +74,7 @@ void TraderSetup(void)
     sub_810993C();
 }
 
-void sub_8109A20(void)
+void SetNotSpokenToTrader(void)
 {
     struct MauvilleManTrader *trader = &gSaveBlock1.mauvilleMan.trader;
     trader->alreadyTraded = FALSE;

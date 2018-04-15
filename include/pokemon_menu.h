@@ -38,7 +38,7 @@ extern void (*gPostMenuFieldCallback)(void);
 
 void HandleDefaultPartyMenu(u8 taskID);
 void sub_808B5B4(u32 taskID);
-void sub_8089A70(void);
+void OpenStandardPartyMenu(void);
 void sub_8089C50(u8 arg0, u8 arg1, u8 arg2, u8 noOfOptions, const struct MenuAction2 *menuActions, const u8 *order);
 void DoPokemonMenu_Switch(u8 taskID);
 void FieldCallback_PrepareFadeInFromMenu(void);

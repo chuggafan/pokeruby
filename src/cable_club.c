@@ -344,7 +344,7 @@ static void sub_808303C(u8 taskId)
     if (linkPlayerCount < taskData[1])
         return;
 
-    sub_80081C8(linkPlayerCount);
+    SetSavedLinkPlayerCount(linkPlayerCount);
     sub_8082D4C();
     ConvertIntToDecimalStringN(gStringVar1, linkPlayerCount, STR_CONV_MODE_LEFT_ALIGN, 1);
     ShowFieldAutoScrollMessage((u8 *)gUnknown_081A4975);
@@ -353,7 +353,7 @@ static void sub_808303C(u8 taskId)
     if ((gLinkType == 0x2255 && (u32)linkPlayerCount > 1)
      || (gLinkType != 0x2255 && taskData[1] <= linkPlayerCount))
     {
-        sub_80081C8(linkPlayerCount);
+        SetSavedLinkPlayerCount(linkPlayerCount);
         sub_8082D4C();
         ConvertIntToDecimalStringN(gStringVar1, linkPlayerCount, STR_CONV_MODE_LEFT_ALIGN, 1);
         ShowFieldAutoScrollMessage((u8 *)gUnknown_081A4975);
@@ -371,7 +371,7 @@ static void sub_80830E4(u8 taskId)
 
     if (GetFieldMessageBoxMode() == FIELD_MESSAGE_BOX_HIDDEN)
     {
-        if (sub_800820C() != GetLinkPlayerCount_2())
+        if (GetSavedLinkPlayerCount() != GetLinkPlayerCount_2())
         {
             ShowFieldAutoScrollMessage(gUnknown_081A4932);
             gTasks[taskId].func = sub_8082FEC;
@@ -399,7 +399,7 @@ static void sub_8083188(u8 taskId)
      || sub_8083444(taskId) == TRUE)
         return;
 
-    if (GetLinkPlayerCount_2() != sub_800820C())
+    if (GetLinkPlayerCount_2() != GetSavedLinkPlayerCount())
     {
         gTasks[taskId].func = sub_8083418;
     }
@@ -439,7 +439,7 @@ static void sub_80831F8(u8 taskId)
     {
         gFieldLinkPlayerCount = GetLinkPlayerCount_2();
         gUnknown_03004860 = GetMultiplayerId();
-        sub_80081C8(gFieldLinkPlayerCount);
+        SetSavedLinkPlayerCount(gFieldLinkPlayerCount);
         TrainerCard_GenerateCardForPlayer((struct TrainerCard *)gBlockSendBuffer);
         gTasks[taskId].func = sub_8083314;
     }
@@ -460,7 +460,7 @@ static void sub_8083288(u8 taskId)
     {
         gFieldLinkPlayerCount = GetLinkPlayerCount_2();
         gUnknown_03004860 = GetMultiplayerId();
-        sub_80081C8(gFieldLinkPlayerCount);
+        SetSavedLinkPlayerCount(gFieldLinkPlayerCount);
         TrainerCard_GenerateCardForPlayer((struct TrainerCard *)gBlockSendBuffer);
         gTasks[taskId].func = sub_8083314;
         sub_8007E9C(2);
@@ -712,7 +712,7 @@ static void sub_8083760(u8 taskId)
 
 static void sub_80837B4(u8 taskId)
 {
-    if (sub_800820C() == GetLinkPlayerCount_2())
+    if (GetSavedLinkPlayerCount() == GetLinkPlayerCount_2())
     {
         sub_8007F4C();
         gTasks[taskId].func = sub_80837EC;

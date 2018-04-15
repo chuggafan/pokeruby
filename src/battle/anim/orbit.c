@@ -37,11 +37,11 @@ void sub_80CAC44(struct Sprite* sprite)
     sprite->pos2.y = Cos(sprite->data[1], -3) + ((sprite->data[2] += 24) >> 8);
     if ((u16)(sprite->data[1] - 0x40) < 0x80)
     {
-        sprite->oam.priority = (sub_8079ED4(gAnimBankTarget) & 3);
+        sprite->oam.priority = (GetSpritePriority(gAnimBankTarget) & 3);
     }
     else
     {
-        var1 = sub_8079ED4(gAnimBankTarget) + 1;
+        var1 = GetSpritePriority(gAnimBankTarget) + 1;
         if (var1 > 3)
         {
             var1 = 3;
@@ -99,11 +99,11 @@ void sub_80CADA8(struct Sprite* sprite)
         sprite->pos2.y += Cos(sprite->data[5], -5);
         if ((u16)(sprite->data[5] - 0x40) < 0x80)
         {
-            sprite->subpriority = sub_8079E90(gAnimBankAttacker) - 1;
+            sprite->subpriority = GetSpriteSubpriority(gAnimBankAttacker) - 1;
         }
         else
         {
-            sprite->subpriority = sub_8079E90(gAnimBankAttacker) + 1;
+            sprite->subpriority = GetSpriteSubpriority(gAnimBankAttacker) + 1;
         }
 
         sprite->data[5] = (sprite->data[5] + 5) & 0xFF;

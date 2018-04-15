@@ -1270,7 +1270,7 @@ sub_80D8048: @ 80D8048
 	ldrh r0, [r4, 0x3C]
 	lsls r0, 24
 	lsrs r0, 24
-	bl sub_8079ED4
+	bl GetSpritePriority
 	movs r1, 0x3
 	ands r1, r0
 	lsls r1, 2
@@ -1285,7 +1285,7 @@ _080D80A4:
 	ldrh r0, [r4, 0x3C]
 	lsls r0, 24
 	lsrs r0, 24
-	bl sub_8079ED4
+	bl GetSpritePriority
 	lsls r0, 24
 	lsrs r0, 24
 	adds r0, 0x1
@@ -2209,7 +2209,7 @@ _080D8824:
 	adds r0, r6
 	strh r0, [r5, 0x36]
 	ldrb r0, [r4]
-	bl sub_8079ED4
+	bl GetSpritePriority
 	lsls r0, 24
 	lsrs r0, 16
 	ldrh r1, [r5, 0x3C]

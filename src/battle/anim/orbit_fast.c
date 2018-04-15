@@ -21,7 +21,7 @@ void AnimOrbitFast(struct Sprite* sprite)
     sprite->affineAnimPaused = 1;
     sprite->data[0] = gBattleAnimArgs[0];
     sprite->data[1] = gBattleAnimArgs[1];
-    sprite->data[7] = sub_8079E90(gAnimBankAttacker);
+    sprite->data[7] = GetSpriteSubpriority(gAnimBankAttacker);
     sprite->callback = AnimOrbitFastStep;
     sprite->callback(sprite);
 }

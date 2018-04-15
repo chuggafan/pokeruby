@@ -1664,7 +1664,7 @@ static void ScriptCmd_createsprite(void)
         else
             argVar *= -1;
 
-        subpriority = sub_8079E90(gAnimBankTarget) + (s8)(argVar);
+        subpriority = GetSpriteSubpriority(gAnimBankTarget) + (s8)(argVar);
     }
     else
     {
@@ -1673,7 +1673,7 @@ static void ScriptCmd_createsprite(void)
         else
             argVar *= -1;
 
-        subpriority = sub_8079E90(gAnimBankAttacker) + (s8)(argVar);
+        subpriority = GetSpriteSubpriority(gAnimBankAttacker) + (s8)(argVar);
     }
 
     if (subpriority < 3)

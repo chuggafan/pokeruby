@@ -88,7 +88,7 @@ static void ChangeLinkDoubleBattlePartyMenuSelection(u8 spriteId, u8 menuIndex, 
 static void UpdateMonIconFrame_806DA0C(struct Sprite *sprite);
 static void UpdateMonIconFrame_806DA38(struct Sprite *sprite);
 static void UpdateMonIconFrame_806DA44(u8 taskId, u8 monIndex, u8 c);
-static u8 sub_806CA00(u8 taskId);
+static u8 GetSpriteIDFromTask(u8 taskId);
 static void SpriteCB_sub_806D37C(struct Sprite *sprite);
 static u8 GetMonIconSpriteId(u8 taskId, u8 monIndex);
 static void SpriteCB_UpdateHeldItemIconPosition(struct Sprite *sprite);
@@ -1310,7 +1310,7 @@ u16 HandleDefaultPartyMenuInput(u8 taskId)
 
         if (menuDirectionPressed == 0)
         {
-            if ((gMain.newKeys & A_BUTTON) && gSprites[sub_806CA00(taskId)].data[0] == 7)
+            if ((gMain.newKeys & A_BUTTON) && gSprites[GetSpriteIDFromTask(taskId)].data[0] == 7)
             {
                 // Selected "CANCEL"
                 return B_BUTTON;
@@ -1401,7 +1401,7 @@ _0806BDF0:\n\
     beq _0806BE24\n\
     ldr r4, _0806BE20 @ =gSprites\n\
     adds r0, r5, 0\n\
-    bl sub_806CA00\n\
+    bl GetSpriteIDFromTask\n\
     lsls r0, 24\n\
     lsrs r0, 24\n\
     lsls r1, r0, 4\n\
@@ -1482,7 +1482,7 @@ u16 HandleBattleTowerPartyMenuInput(u8 taskId)
         {
             if (gMain.newKeys & A_BUTTON)
             {
-                if (gSprites[sub_806CA00(taskId)].data[0] == 7)
+                if (gSprites[GetSpriteIDFromTask(taskId)].data[0] == 7)
                     return B_BUTTON;
             }
         }
@@ -1513,7 +1513,7 @@ void sub_806BF24(const u8 *a, u8 monIndex, u8 c, u8 d)
 void ChangePartyMenuSelection(u8 taskId, s8 directionPressed)
 {
     bool8 isLinkDoubleBattle;
-    u8 spriteId = sub_806CA00(taskId);
+    u8 spriteId = GetSpriteIDFromTask(taskId);
     u8 menuIndex = gSprites[spriteId].data[0];
 
     UpdateMonIconFrame_806DA44(taskId, menuIndex, 0);
@@ -2059,7 +2059,7 @@ void ChangeBattleTowerPartyMenuSelection(u8 taskId, s8 directionPressed)
     u8 newMenuIndex2;
     u8 newMenuIndex3;
     s8 menuMovement;
-    u8 spriteId = sub_806CA00(taskId);
+    u8 spriteId = GetSpriteIDFromTask(taskId);
     u8 menuIndex = gSprites[spriteId].data[0];
 
     UpdateMonIconFrame_806DA44(taskId, menuIndex, 0);
@@ -2137,7 +2137,7 @@ void ChangeBattleTowerPartyMenuSelection(u8 taskId, s8 directionPressed)
 // Selects the "OK" button in the Battle Tower party menu.
 void SelectBattleTowerOKButton(u8 taskId)
 {
-    u8 spriteId = sub_806CA00(taskId);
+    u8 spriteId = GetSpriteIDFromTask(taskId);
 
     u8 menuIndex = gSprites[spriteId].data[0];
     if (menuIndex != 6)
@@ -2198,7 +2198,7 @@ void sub_806C92C(u8 spriteId)
 
 void sub_806C994(u8 taskId, u8 b)
 {
-    u8 spriteId = sub_806CA00(taskId);
+    u8 spriteId = GetSpriteIDFromTask(taskId);
 
     gSprites[spriteId].data[0] = b;
     sub_806C92C(spriteId);
@@ -2206,14 +2206,14 @@ void sub_806C994(u8 taskId, u8 b)
 
 void sub_806C9C4(u8 taskId, u8 spriteId)
 {
-    u8 spriteId2 = sub_806CA00(taskId);
+    u8 spriteId2 = GetSpriteIDFromTask(taskId);
 
     gSprites[spriteId].pos1.x = gSprites[spriteId2].pos1.x;
     gSprites[spriteId].pos1.y = gSprites[spriteId2].pos1.y;
     gSprites[spriteId].data[0] = gSprites[spriteId2].data[0];
 }
 
-u8 sub_806CA00(u8 taskId)
+u8 GetSpriteIDFromTask(u8 taskId)
 {
     return gTasks[taskId].data[3] >> 8;
 }
@@ -2226,7 +2226,7 @@ void sub_806CA18(u8 taskId, u8 b)
 
 u8 sub_806CA38(u8 taskId)
 {
-    u8 spriteId = sub_806CA00(taskId);
+    u8 spriteId = GetSpriteIDFromTask(taskId);
     return gSprites[spriteId].data[0];
 }
 
@@ -2239,7 +2239,7 @@ void SetupDefaultPartyMenuSwitchPokemon(u8 taskId)
     ewram01000.unk1 = CreateInvisibleSpriteWithCallback(SpriteCallbackDummy);
 
     sub_806C9C4(taskId, ewram01000.unk1);
-    ewram01000.unk2 = sub_806CA00(taskId);
+    ewram01000.unk2 = GetSpriteIDFromTask(taskId);
 
     PrintPartyMenuPromptText(ewram1B000_alt.unk272, 0);
 

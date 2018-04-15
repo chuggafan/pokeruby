@@ -34,7 +34,7 @@ void sub_80D5B0C(struct Sprite *sprite)
             sprite->data[4] = -4;
         }
 
-        sprite->oam.priority = sub_8079ED4(gAnimBankTarget);
+        sprite->oam.priority = GetSpritePriority(gAnimBankTarget);
         sprite->data[0]++;
         break;
     case 1:
